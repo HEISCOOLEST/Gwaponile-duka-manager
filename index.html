@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="sw">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Queluxy Tours — safari za Tanzania, Zanzibar na Kilimanjaro. Gundua Tanzania na ujionee uzoefu wa kipekee.">
+  <title>Queluxy Tours | Gundua Tanzania</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="topbar">
+      <div>📍 Arusha, Tanzania</div>
+      <div>☎ +255 745 179 214</div>
+      <div>✉ queantanamellahhqteam@gmail.com</div>
+      <div class="social">Follow us: <span>f</span><span>◎</span><span>▶</span></div>
+    </div>
+    <nav class="nav container">
+      <a class="brand" href="#home" aria-label="Queluxy Tours home">
+        <span class="brand-q">Q</span><span>ueluxy</span><small>TOURS</small>
+      </a>
+      <button class="menu-btn" aria-label="Open menu">☰</button>
+      <div class="nav-links">
+        <a class="active" href="#home">Home</a>
+        <a href="#safari">Safari</a>
+        <a href="#zanzibar">Zanzibar</a>
+        <a href="#kilimanjaro">Kilimanjaro</a>
+        <a href="#packages">Ziara & Vifurushi</a>
+        <a href="#gallery">Picha</a>
+        <a href="#reviews">Maoni</a>
+        <a href="#contact">Mawasiliano</a>
+        <a class="nav-cta" href="#booking">Weka Nafasi</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <p class="eyebrow">Karibu Queluxy Tours</p>
+        <h1>Gundua Tanzania.<br><em>Jionee Uzoefu wa Kipekee.</em></h1>
+        <p class="hero-copy">Kutoka safari za kusisimua porini hadi fukwe za kuvutia za Zanzibar na kilele cha Kilimanjaro — tunafanya safari ya ndoto zako kuwa kumbukumbu isiyosahaulika.</p>
+        <div class="hero-actions">
+          <a class="btn gold" href="#packages">Gundua Ziara →</a>
+          <a class="btn outline" href="#gallery">▶ Tazama Video</a>
+        </div>
+      </div>
+      <div class="slider-dots"><i></i><i class="on"></i><i></i></div>
+    </section>
+
+    <section id="booking" class="booking-wrap container">
+      <form class="booking-card" onsubmit="return searchTours(event)">
+        <label>Unakokwenda<select id="destination"><option>Unataka kwenda wapi?</option><option>Serengeti</option><option>Zanzibar</option><option>Kilimanjaro</option><option>Tarangire & Ngorongoro</option></select></label>
+        <label>Kuanza<input id="checkin" type="date"></label>
+        <label>Kumaliza<input id="checkout" type="date"></label>
+        <label>Wasafiri<select id="travelers"><option>2 Wasafiri</option><option>Msafiri 1</option><option>3 Wasafiri</option><option>4 Wasafiri</option><option>5+ Wasafiri</option></select></label>
+        <button class="btn gold search-btn" type="submit">Tafuta Ziara 🔎</button>
+      </form>
+      <p id="search-message" class="search-message"></p>
+    </section>
+
+    <section id="packages" class="section container">
+      <div class="section-head">
+        <p class="eyebrow">Top Unakokwendas</p>
+        <h2>Vifurushi Maarufu vya Ziara</h2>
+        <p>Uzoefu uliochaguliwa kwa ajili ya safari ya kukumbukwa.</p>
+      </div>
+      <div class="cards">
+        <article class="tour-card safari-card" id="safari">
+          <div class="card-shade"></div><span class="tag">INAYOPENDWA ZAIDI</span>
+          <div class="card-content"><h3>Safari ya Serengeti</h3><p>Siku 3 / Usiku 2</p><strong>Kuanzia $650 <small>Kwa Mtu</small></strong></div>
+        </article>
+        <article class="tour-card zanzibar-card" id="zanzibar">
+          <div class="card-shade"></div><span class="tag">PARADISO YA VISIWANI</span>
+          <div class="card-content"><h3>Mapumziko ya Fukwe za Zanzibar</h3><p>Siku 4 / Usiku 3</p><strong>Kuanzia $550 <small>Kwa Mtu</small></strong></div>
+        </article>
+        <article class="tour-card kilimanjaro-card" id="kilimanjaro">
+          <div class="card-shade"></div><span class="tag">KUSISIMUA</span>
+          <div class="card-content"><h3>Kupanda Kilimanjaro</h3><p>Siku 6 / Usiku 5</p><strong>Kuanzia $1,850 <small>Kwa Mtu</small></strong></div>
+        </article>
+        <article class="tour-card north-card">
+          <div class="card-shade"></div><span class="tag">INAYOFAA FAMILIA</span>
+          <div class="card-content"><h3>Tarangire & Ngorongoro</h3><p>Siku 4 / Usiku 3</p><strong>Kuanzia $750 <small>Kwa Mtu</small></strong></div>
+        </article>
+      </div>
+      <div class="center"><a class="btn outline dark" href="#contact">Tazama Vifurushi Vyote →</a></div>
+    </section>
+
+    <section class="trust container">
+      <div><b>🛡 Dhamana ya Bei Bora</b><span>Pata thamani bora kwa fedha zako</span></div>
+      <div><b>◉ Huduma kwa Wateja 24/7</b><span>Tupo tayari kukusaidia wakati wote</span></div>
+      <div><b>✦ Wataalamu wa Ndani Wanaoaminika</b><span>Waongoza watalii wenye uzoefu na weledi</span></div>
+      <div><b>◎ Uzoefu wa Kukumbukwa</b><span>Tunatengeneza kumbukumbu zitakazodumu maisha yote</span></div>
+    </section>
+
+    <section id="gallery" class="gallery section">
+      <div class="container">
+        <div class="section-head"><p class="eyebrow">Ione Tanzania</p><h2>Nyakati za Kukumbukwa</h2></div>
+        <div class="gallery-grid">
+          <div class="g g1">SERENGETI</div><div class="g g2">ZANZIBAR</div><div class="g g3">KILIMANJARO</div><div class="g g4">NGORONGORO</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews" class="section reviews container">
+      <div class="section-head"><p class="eyebrow">Maoni ya Wasafiri</p><h2>What Our Wasafiri Say</h2></div>
+      <div class="review-grid">
+        <blockquote>“Queluxy made our safari effortless. The guide was fantastic and every detail was handled beautifully.”<cite>— Sarah M., United Kingdom</cite></blockquote>
+        <blockquote>“Zanzibar was perfect. Beautiful hotels, great communication and an unforgettable experience.”<cite>— Daniel K., Germany</cite></blockquote>
+        <blockquote>“Our Kilimanjaro team was professional, supportive and incredibly knowledgeable.”<cite>— James R., USA</cite></blockquote>
+      </div>
+    </section>
+
+    <section id="contact" class="contact section">
+      <div class="container contact-inner">
+        <div><p class="eyebrow">Anza Safari Yako</p><h2>Uko tayari kuigundua Tanzania?</h2><p>Tuambie unachotamani na tutakusaidia kupanga safari yako bora.</p></div>
+        <a class="btn gold" href="https://wa.me/255745179214?text=Hello%20Queluxy%20Tours%2C%20I%27d%20like%20to%20book%20a%20tour." target="_blank" rel="noopener">Wasiliana WhatsApp</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div><a class="brand light" href="#home"><span class="brand-q">Q</span><span>ueluxy</span><small>TOURS</small></a><p>Gundua Tanzania. Jionee uzoefu wa kipekee.</p></div>
+      <div><h4>Gundua</h4><a href="#safari">Safari</a><a href="#zanzibar">Zanzibar</a><a href="#kilimanjaro">Kilimanjaro</a></div>
+      <div><h4>Mawasiliano</h4><p>Arusha, Tanzania</p><p>+255 745 179 214</p><p>queantanamellahhqteam@gmail.com</p></div>
+    </div>
+    <div class="copyright">© 2026 Queluxy Tours. Haki zote zimehifadhiwa.</div>
+  </footer>
+
+  <a class="whatsapp" href="https://wa.me/255745179214?text=Hello%20Queluxy%20Tours%2C%20I%27d%20like%20to%20plan%20a%20trip." target="_blank" rel="noopener">◉ <span>Wasiliana WhatsApp</span></a>
+  <script src="script.js"></script>
+</body>
+</html>
