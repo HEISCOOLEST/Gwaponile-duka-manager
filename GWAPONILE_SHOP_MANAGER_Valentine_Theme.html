@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#fff5f7" />
+<title>GWAPONILE SHOP MANAGER — Valentine Theme</title>
+
+<style>
+:root{
+  --bg:#f6fbf8;
+  --surface:#ffffff;
+  --surface-2:#eef8f3;
+  --text:#17241f;
+  --muted:#687770;
+  --primary:#16865a;
+  --primary-2:#0b6f4a;
+  --accent:#e84262;
+  --accent-soft:#ffe7ed;
+  --line:#d9e7e0;
+  --shadow:0 12px 34px rgba(19,52,39,.09);
+  --radius:22px;
+  --transition:420ms cubic-bezier(.2,.75,.2,1);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 90% 0%, color-mix(in srgb,var(--accent) 9%,transparent), transparent 28%),
+    radial-gradient(circle at 0% 35%, color-mix(in srgb,var(--primary) 8%,transparent), transparent 30%),
+    var(--bg);
+  transition:background var(--transition),color var(--transition);
+  overflow-x:hidden;
+}
+
+button{font:inherit}
+button:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 45%,white);outline-offset:3px}
+
+/* ---------- Theme transition layer ---------- */
+.app,.topbar,.sidebar,.card,.metric,.target,.chart,.nav-item,.theme-pill,.online,.new-sale,
+.icon-box,.target-button{
+  transition:
+    background var(--transition),
+    background-color var(--transition),
+    border-color var(--transition),
+    color var(--transition),
+    box-shadow var(--transition),
+    transform 260ms ease;
+}
+
+/* ---------- Ambient, non-intrusive Valentine animation ---------- */
+.ambient-hearts{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:0;
+  opacity:.7;
+}
+.heart{
+  position:absolute;
+  bottom:-40px;
+  font-size:14px;
+  color:var(--accent);
+  opacity:0;
+  animation:floatHeart linear infinite;
+  filter:drop-shadow(0 4px 8px rgba(232,66,98,.12));
+}
+.heart:nth-child(1){left:8%;animation-duration:13s;animation-delay:1s}
+.heart:nth-child(2){left:21%;animation-duration:17s;animation-delay:4s;font-size:11px}
+.heart:nth-child(3){left:38%;animation-duration:15s;animation-delay:7s}
+.heart:nth-child(4){left:61%;animation-duration:18s;animation-delay:2s;font-size:12px}
+.heart:nth-child(5){left:79%;animation-duration:14s;animation-delay:6s}
+.heart:nth-child(6){left:92%;animation-duration:19s;animation-delay:9s;font-size:10px}
+
+@keyframes floatHeart{
+  0%{transform:translateY(0) scale(.75) rotate(0deg);opacity:0}
+  12%{opacity:.45}
+  75%{opacity:.22}
+  100%{transform:translateY(-105vh) translateX(25px) scale(1.1) rotate(18deg);opacity:0}
+}
+
+/* ---------- Layout ---------- */
+.app{
+  position:relative;
+  z-index:1;
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:88px 1fr;
+}
+
+.sidebar{
+  background:color-mix(in srgb,var(--surface) 92%,var(--primary) 8%);
+  border-right:1px solid var(--line);
+  padding:18px 12px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:13px;
+  position:sticky;
+  top:0;
+  height:100vh;
+}
+
+.logo{
+  width:52px;height:52px;
+  border-radius:16px;
+  display:grid;place-items:center;
+  color:white;
+  font-size:24px;
+  background:linear-gradient(145deg,var(--primary),var(--accent));
+  box-shadow:0 9px 22px color-mix(in srgb,var(--accent) 18%,transparent);
+  animation:logoPulse 4s ease-in-out infinite;
+}
+@keyframes logoPulse{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-2px)}
+}
+
+.nav{
+  width:100%;
+  margin-top:12px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.nav-item{
+  width:100%;
+  height:50px;
+  border:0;
+  border-radius:15px;
+  background:transparent;
+  color:var(--muted);
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  font-size:21px;
+}
+.nav-item:hover{background:var(--accent-soft);color:var(--accent);transform:translateY(-1px)}
+.nav-item.active{
+  background:color-mix(in srgb,var(--primary) 11%,var(--surface));
+  color:var(--primary);
+  box-shadow:inset 3px 0 var(--primary);
+}
+.logout{margin-top:auto}
+
+.main{min-width:0}
+
+.topbar{
+  height:84px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:0 30px;
+  background:color-mix(in srgb,var(--surface) 88%,transparent);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(14px);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+}
+.menu{
+  width:48px;height:48px;border:1px solid var(--line);
+  border-radius:15px;background:var(--surface);
+  color:var(--text);font-size:22px;cursor:pointer;
+  box-shadow:0 7px 20px rgba(0,0,0,.05);
+}
+.brand-name{font-weight:800;font-size:18px;white-space:nowrap}
+.brand-sub{font-size:12px;color:var(--muted)}
+
+.top-actions{display:flex;align-items:center;gap:10px}
+.theme-pill,.online{
+  border:1px solid var(--line);
+  background:var(--surface);
+  border-radius:15px;
+  min-height:48px;
+  padding:0 15px;
+  display:flex;align-items:center;gap:10px;
+  color:var(--text);
+}
+.theme-pill{cursor:pointer}
+.theme-dot{
+  width:30px;height:30px;border-radius:10px;
+  display:grid;place-items:center;
+  background:var(--accent-soft);
+  color:var(--accent);
+}
+.online{
+  color:var(--primary);
+  border-color:color-mix(in srgb,var(--primary) 25%,var(--line));
+  font-size:13px;font-weight:800;
+}
+.online::before{
+  content:"";
+  width:8px;height:8px;border-radius:50%;
+  background:var(--primary);
+  box-shadow:0 0 0 5px color-mix(in srgb,var(--primary) 13%,transparent);
+}
+
+.content{
+  max-width:1250px;
+  margin:0 auto;
+  padding:42px 32px 70px;
+}
+
+.eyebrow{
+  color:var(--primary);
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.12em;
+  margin-bottom:6px;
+}
+h1{font-size:32px;margin:0 0 8px}
+.subtitle{color:var(--muted);margin:0 0 24px}
+
+.new-sale{
+  width:100%;
+  border:0;
+  border-radius:18px;
+  padding:18px 22px;
+  color:white;
+  font-weight:800;
+  font-size:16px;
+  cursor:pointer;
+  background:linear-gradient(100deg,var(--primary),var(--accent));
+  box-shadow:0 13px 28px color-mix(in srgb,var(--primary) 18%,transparent);
+}
+.new-sale:hover{transform:translateY(-2px);box-shadow:0 17px 34px color-mix(in srgb,var(--accent) 20%,transparent)}
+
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-top:16px;
+}
+
+.card,.metric,.target,.chart{
+  background:color-mix(in srgb,var(--surface) 94%,var(--accent) 6%);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+}
+
+.metric{
+  padding:20px;
+  border-radius:20px;
+}
+.metric:hover,.chart:hover{transform:translateY(-2px)}
+.metric-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:14px;font-weight:700}
+.icon-box{
+  width:40px;height:40px;border-radius:13px;
+  display:grid;place-items:center;
+  background:var(--accent-soft);
+  color:var(--accent);
+  font-size:18px;
+}
+.metric-value{font-size:25px;font-weight:850;margin-top:14px}
+.metric-note{font-size:12px;color:var(--muted);margin-top:5px}
+
+.target{
+  margin-top:16px;
+  border-radius:22px;
+  padding:24px;
+  background:
+    linear-gradient(135deg,
+      color-mix(in srgb,var(--primary) 7%,var(--surface)),
+      color-mix(in srgb,var(--accent) 6%,var(--surface)));
+}
+.target-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
+.target-title{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:850}
+.target-title span{font-size:22px}
+.target-desc{color:var(--muted);font-size:13px;margin-top:6px}
+.target-row{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:20px}
+.target-value{font-size:28px;font-weight:900}
+.target-small{font-size:12px;color:var(--muted)}
+.target-button{
+  border:1px solid var(--primary);
+  color:var(--primary);
+  background:transparent;
+  border-radius:14px;
+  padding:12px 18px;
+  font-weight:800;
+  cursor:pointer;
+}
+.target-button:hover{background:var(--primary);color:white;transform:translateY(-1px)}
+.progress{
+  height:13px;
+  border-radius:999px;
+  overflow:hidden;
+  background:color-mix(in srgb,var(--primary) 12%,var(--surface));
+  margin-top:18px;
+}
+.progress > i{
+  display:block;
+  width:72%;
+  height:100%;
+  border-radius:inherit;
+  background:linear-gradient(90deg,var(--primary),var(--accent));
+  animation:progressGlow 3.5s ease-in-out infinite alternate;
+}
+@keyframes progressGlow{
+  from{filter:saturate(1)}
+  to{filter:saturate(1.25) brightness(1.05)}
+}
+.target-meta{margin-top:9px;color:var(--muted);font-size:13px}
+
+.chart{
+  margin-top:16px;
+  border-radius:22px;
+  padding:22px;
+  overflow:hidden;
+}
+.chart-head{display:flex;justify-content:space-between;align-items:center}
+.chart-title{font-size:18px;font-weight:850}
+.play{
+  border:1px solid var(--line);
+  background:var(--surface);
+  color:var(--text);
+  border-radius:999px;
+  padding:10px 14px;
+  font-weight:750;
+  cursor:pointer;
+  box-shadow:0 7px 18px rgba(0,0,0,.06);
+}
+.play:hover{color:var(--accent);border-color:var(--accent)}
+
+.graph{
+  width:100%;
+  height:250px;
+  margin-top:12px;
+}
+.gridline{stroke:var(--line);stroke-width:1}
+.axis-text{fill:var(--muted);font-size:11px}
+.revenue-line{
+  fill:none;
+  stroke:var(--accent);
+  stroke-width:5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  filter:drop-shadow(0 4px 7px color-mix(in srgb,var(--accent) 22%,transparent));
+}
+.revenue-dot{fill:var(--surface);stroke:var(--accent);stroke-width:4}
+.graph.playing .revenue-line{
+  stroke-dasharray:700;
+  stroke-dashoffset:700;
+  animation:drawGraph 1.8s ease-out forwards;
+}
+@keyframes drawGraph{to{stroke-dashoffset:0}}
+
+.recent{
+  margin-top:16px;
+  border-radius:22px;
+  padding:22px;
+}
+.recent-title{font-size:18px;font-weight:850}
+.sale{
+  display:flex;justify-content:space-between;gap:15px;
+  padding:15px 0;border-bottom:1px solid var(--line);
+}
+.sale:last-child{border-bottom:0}
+.sale-id{font-size:12px;color:var(--muted)}
+.sale-name{margin-top:3px}
+.sale-date{font-size:12px;color:var(--muted);text-align:right}
+.sale-price{font-weight:850;color:var(--primary);margin-top:4px;text-align:right}
+
+/* ---------- Responsive ---------- */
+@media(max-width:900px){
+  .app{grid-template-columns:0 1fr}
+  .sidebar{display:none}
+  .content{padding:28px 16px 50px}
+  .topbar{padding:0 14px;height:76px}
+  .brand-name{display:none}
+  .metrics{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){
+  .top-actions .online{display:none}
+  .theme-pill{padding:0 10px}
+  .theme-pill .theme-text{display:none}
+  h1{font-size:27px}
+  .metrics{grid-template-columns:1fr 1fr}
+  .metric{padding:16px}
+  .metric-value{font-size:21px}
+  .target-row{align-items:flex-start;flex-direction:column}
+  .target-button{width:100%}
+}
+
+/* ---------- Reduced motion accessibility ---------- */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+    transition-duration:.01ms!important;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="ambient-hearts" aria-hidden="true">
+  <span class="heart">♥</span><span class="heart">♥</span><span class="heart">♥</span>
+  <span class="heart">♥</span><span class="heart">♥</span><span class="heart">♥</span>
+</div>
+
+<div class="app">
+  <aside class="sidebar">
+    <div class="logo">♥</div>
+    <nav class="nav">
+      <button class="nav-item active" title="Dashboard">▦</button>
+      <button class="nav-item" title="New sale">▤</button>
+      <button class="nav-item" title="Inventory">◇</button>
+      <button class="nav-item" title="Customers">♧</button>
+      <button class="nav-item" title="Suppliers">▣</button>
+      <button class="nav-item" title="Sales history">◷</button>
+      <button class="nav-item" title="Reports">▥</button>
+    </nav>
+    <button class="nav-item logout" title="Logout">↪</button>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="brand">
+        <button class="menu" aria-label="Menu">☰</button>
+        <div>
+          <div class="brand-name">GWAPONILE SHOP MANAGER</div>
+          <div class="brand-sub">Management workspace</div>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <button class="theme-pill" id="themeButton" type="button" title="Change theme">
+          <span class="theme-dot">🎨</span>
+          <span class="theme-text" id="themeText">❤️ Valentine • Global</span>
+        </button>
+        <div class="online">ONLINE</div>
+      </div>
+    </header>
+
+    <section class="content">
+      <div class="eyebrow">MANAGEMENT WORKSPACE</div>
+      <h1>Dashboard</h1>
+      <p class="subtitle">Karibu, Nehemia. Taarifa za biashara na uendeshaji kwa nafasi yako.</p>
+
+      <button class="new-sale" type="button">▤ &nbsp; New sale</button>
+
+      <div class="metrics">
+        <article class="metric">
+          <div class="metric-top"><span>Total Revenue</span><span class="icon-box">↗</span></div>
+          <div class="metric-value">TZS 38,636</div>
+          <div class="metric-note">18 sales recorded</div>
+        </article>
+
+        <article class="metric">
+          <div class="metric-top"><span>Average Revenue</span><span class="icon-box">▤</span></div>
+          <div class="metric-value">TZS 2,146</div>
+          <div class="metric-note">Per completed sale</div>
+        </article>
+
+        <article class="metric">
+          <div class="metric-top"><span>Customers</span><span class="icon-box">♧</span></div>
+          <div class="metric-value">4</div>
+          <div class="metric-note">Active customer records</div>
+        </article>
+
+        <article class="metric">
+          <div class="metric-top"><span>Low Stock</span><span class="icon-box">!</span></div>
+          <div class="metric-value">3</div>
+          <div class="metric-note">Tap to view inventory</div>
+        </article>
+      </div>
+
+      <section class="target">
+        <div class="target-head">
+          <div>
+            <div class="target-title"><span>🎯</span> Target ya Mauzo ya Leo</div>
+            <div class="target-desc">Lengo la mauzo la siku hii — progress inasasishwa moja kwa moja.</div>
+          </div>
+          <div class="target-title" style="color:var(--accent);font-size:14px">❤️ KEEP GOING</div>
+        </div>
+
+        <div class="target-row">
+          <div>
+            <div class="target-value">TZS 22,399</div>
+            <div class="target-small">mauzo leo</div>
+          </div>
+          <button class="target-button" type="button">Badilisha Target</button>
+        </div>
+
+        <div class="progress"><i></i></div>
+        <div class="target-meta">Target: <strong>TZS 30,000</strong> · Umefikia 74.7% ya target</div>
+      </section>
+
+      <section class="chart">
+        <div class="chart-head">
+          <div class="chart-title">Revenue — last 14 days</div>
+          <button class="play" id="playGraph" type="button">▶ Play animation</button>
+        </div>
+
+        <svg class="graph" id="graph" viewBox="0 0 900 250" preserveAspectRatio="none" role="img" aria-label="Revenue graph">
+          <line class="gridline" x1="40" y1="35" x2="875" y2="35"/>
+          <line class="gridline" x1="40" y1="125" x2="875" y2="125"/>
+          <line class="gridline" x1="40" y1="215" x2="875" y2="215"/>
+          <text class="axis-text" x="8" y="39">30k</text>
+          <text class="axis-text" x="18" y="219">0</text>
+
+          <polyline class="revenue-line"
+            points="40,215 105,215 170,215 235,215 300,215 365,215 430,215 495,215 560,215 625,215 690,210 755,150 820,45 875,215"/>
+          <circle class="revenue-dot" cx="820" cy="45" r="7"/>
+        </svg>
+      </section>
+
+      <section class="recent card">
+        <div class="recent-title">📄 Recent sales <span style="color:var(--primary);font-size:14px">View all</span></div>
+
+        <div class="sale">
+          <div><div class="sale-id">#SALE-20260823-029002</div><div class="sale-name">jailos</div></div>
+          <div><div class="sale-date">2026-08-23</div><div class="sale-price">TZS 5,225</div></div>
+        </div>
+        <div class="sale">
+          <div><div class="sale-id">#SALE-20260823-815320</div><div class="sale-name">JUMA</div></div>
+          <div><div class="sale-date">2026-08-23</div><div class="sale-price">TZS 1,900</div></div>
+        </div>
+        <div class="sale">
+          <div><div class="sale-id">#SALE-20260823-694290</div><div class="sale-name">Walk-in Customer</div></div>
+          <div><div class="sale-date">2026-08-23</div><div class="sale-price">TZS 1,900</div></div>
+        </div>
+      </section>
+    </section>
+  </main>
+</div>
+
+<script>
+/*
+  Theme engine:
+  The important part is that the theme changes CSS variables used by
+  the WHOLE interface — background, cards, borders, buttons, icons,
+  chart, progress bar, accents and small animations.
+*/
+
+const themes = {
+  valentine: {
+    name: "❤️ Valentine • Global",
+    bg: "#fff7f8",
+    surface: "#ffffff",
+    surface2: "#fff0f3",
+    text: "#25171b",
+    muted: "#786970",
+    primary: "#13845b",
+    primary2: "#0b704b",
+    accent: "#e83f63",
+    accentSoft: "#ffe5eb",
+    line: "#ecd8de"
+  },
+  eid: {
+    name: "🌙 Eid al-Adha • Global",
+    bg: "#f4fbf7",
+    surface: "#ffffff",
+    surface2: "#eaf7f0",
+    text: "#14251e",
+    muted: "#68776f",
+    primary: "#138653",
+    primary2: "#0b7044",
+    accent: "#c69b2d",
+    accentSoft: "#f8f0d8",
+    line: "#d6e8dd"
+  },
+  boxing: {
+    name: "🥊 Boxing Day • Global",
+    bg: "#f6f8ff",
+    surface: "#ffffff",
+    surface2: "#eef2ff",
+    text: "#151b2b",
+    muted: "#687087",
+    primary: "#315ed8",
+    primary2: "#2449b0",
+    accent: "#d63b46",
+    accentSoft: "#ffe7e9",
+    line: "#d9def0"
+  }
+};
+
+const root = document.documentElement;
+const themeText = document.getElementById("themeText");
+const themeButton = document.getElementById("themeButton");
+
+function applyTheme(key){
+  const t = themes[key];
+  root.style.setProperty("--bg",t.bg);
+  root.style.setProperty("--surface",t.surface);
+  root.style.setProperty("--surface-2",t.surface2);
+  root.style.setProperty("--text",t.text);
+  root.style.setProperty("--muted",t.muted);
+  root.style.setProperty("--primary",t.primary);
+  root.style.setProperty("--primary-2",t.primary2);
+  root.style.setProperty("--accent",t.accent);
+  root.style.setProperty("--accent-soft",t.accentSoft);
+  root.style.setProperty("--line",t.line);
+  themeText.textContent=t.name;
+  localStorage.setItem("gwaponile-theme",key);
+}
+
+const savedTheme = localStorage.getItem("gwaponile-theme") || "valentine";
+applyTheme(savedTheme);
+
+themeButton.addEventListener("click",()=>{
+  const keys=Object.keys(themes);
+  const current=localStorage.getItem("gwaponile-theme") || "valentine";
+  const next=keys[(keys.indexOf(current)+1)%keys.length];
+  applyTheme(next);
+});
+
+/* Graph animation is manual so it doesn't disturb normal work. */
+const graph=document.getElementById("graph");
+const play=document.getElementById("playGraph");
+
+play.addEventListener("click",()=>{
+  graph.classList.remove("playing");
+  void graph.offsetWidth;
+  graph.classList.add("playing");
+});
+
+/* Gentle celebration only when the target is actually reached. */
+const progress=document.querySelector(".progress > i");
+let celebrationTriggered=false;
+
+function celebrateTarget(){
+  if(celebrationTriggered) return;
+  celebrationTriggered=true;
+
+  for(let i=0;i<14;i++){
+    const el=document.createElement("span");
+    el.textContent=["♥","✦","♥","✧"][i%4];
+    el.style.position="fixed";
+    el.style.left=(45+Math.random()*10)+"vw";
+    el.style.top="50vh";
+    el.style.zIndex="100";
+    el.style.pointerEvents="none";
+    el.style.color="var(--accent)";
+    el.style.fontSize=(12+Math.random()*12)+"px";
+    document.body.appendChild(el);
+
+    const dx=(Math.random()-.5)*260;
+    const dy=-(70+Math.random()*190);
+    el.animate([
+      {transform:"translate(0,0) scale(.6)",opacity:0},
+      {transform:`translate(${dx*.35}px,${dy*.35}px) scale(1)`,opacity:1,offset:.2},
+      {transform:`translate(${dx}px,${dy}px) scale(.8)`,opacity:0}
+    ],{duration:1100+Math.random()*500,easing:"cubic-bezier(.2,.8,.2,1)"})
+    .finished.then(()=>el.remove());
+  }
+}
+
+/* Example hook:
+   Call celebrateTarget() from your real sale/target update logic
+   only when today's revenue >= today's target.
+*/
+</script>
+</body>
+</html>
